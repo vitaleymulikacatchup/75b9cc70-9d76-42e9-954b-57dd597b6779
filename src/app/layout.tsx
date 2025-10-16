@@ -1,5 +1,16 @@
 import type { Metadata } from "next";
-import { Inter_Tight, Playfair_Display, Roboto, Open_Sans, Lato, Montserrat, Poppins, Raleway, Ubuntu, Nunito } from "next/font/google";
+import {
+  Inter_Tight,
+  Playfair_Display,
+  Roboto,
+  Open_Sans,
+  Lato,
+  Montserrat,
+  Poppins,
+  Raleway,
+  Ubuntu,
+  Nunito
+} from "next/font/google";
 import "./globals.css";
 
 const interTight = Inter_Tight({
@@ -63,23 +74,24 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  title: "Pizzeria | Best Pizza in Town",
-  description: "Discover the finest pizzas made with fresh ingredients at our pizzeria. Order now and experience deliciousness!",
+  title: "Pizzeria - Best Pizza in Town",
+  description: "Welcome to our pizzeria! Enjoy the best classic and gourmet pizzas made with fresh ingredients.",
   openGraph: {
-    title: "Pizzeria | Best Pizza in Town",
-    description: "Discover the finest pizzas made with fresh ingredients at our pizzeria. Order now and experience deliciousness!",
-    url: "/",
+    title: "Pizzeria - Best Pizza in Town",
+    description: "Welcome to our pizzeria! Enjoy the best classic and gourmet pizzas made with fresh ingredients.",
+    url: "",
     siteName: "Pizzeria",
-    images: [{ url: "https://images.pexels.com/photos/708587/pexels-photo-708587.jpeg?auto=compress&cs=tinysrgb&h=650&w=940", alt: "A mouthwatering slice of pepperoni pizza with cheese and spices, ideal for any meal." }],
-    type: "website",
+    images: [{
+      url: "https://images.pexels.com/photos/2909822/pexels-photo-2909822.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+      alt: "Delicious Pizza"
+    }],
+    type: "website"
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pizzeria | Best Pizza in Town",
-    description: "Discover the finest pizzas made with fresh ingredients at our pizzeria. Order now and experience deliciousness!",
-    images: ["https://images.pexels.com/photos/708587/pexels-photo-708587.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"],
-  },
-  robots: { index: true, follow: true },
+    title: "Pizzeria - Best Pizza in Town",
+    description: "Welcome to our pizzeria! Enjoy the best classic and gourmet pizzas made with fresh ingredients."
+  }
 };
 
 export default function RootLayout({
@@ -87,7 +99,11 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode; }>) {
   return (
     <html lang="en">
-      <body className={`${interTight.variable} ${playfairDisplay.variable} ${roboto.variable} ${openSans.variable} ${lato.variable} ${montserrat.variable} ${poppins.variable} ${raleway.variable} ${ubuntu.variable} ${nunito.variable} antialiased`}>{children}
+      <body
+        className={`${interTight.variable} ${playfairDisplay.variable} ${roboto.variable} ${openSans.variable} ${lato.variable} ${montserrat.variable} ${poppins.variable} ${raleway.variable} ${ubuntu.variable} ${nunito.variable} antialiased`}
+      >
+        {children}
+      
         <script
           dangerouslySetInnerHTML={{
             __html: `

@@ -1,29 +1,32 @@
-use client
-
+"use client";
 import { ThemeProvider } from "@/providers/ThemeProvider";
-import NavbarLayoutFloatingOverlay from '@/components/navbar/NavbarLayoutFloatingOverlay/NavbarLayoutFloatingOverlay';
+import NavbarStyleApple from '@/components/navbar/NavbarStyleApple/NavbarStyleApple';
 import HeroBillboard from '@/components/sections/hero/HeroBillboard';
-import TextAbout from '@/components/sections/about/TextAbout';
-import FeatureCardTwo from '@/components/sections/feature/FeatureCardTwo';
-import ProductCardOne from '@/components/sections/product/ProductCardOne';
-import TeamCardThree from '@/components/sections/team/TeamCardThree';
-import TestimonialCardTwo from '@/components/sections/testimonial/TestimonialCardTwo';
-import ContactSplit from '@/components/sections/contact/ContactSplit';
+import TextSplitAbout from '@/components/sections/about/TextSplitAbout';
+import ProductCardTwo from '@/components/sections/product/ProductCardTwo';
+import ContactCenter from '@/components/sections/contact/ContactCenter';
 import FooterBase from '@/components/sections/footer/FooterBase';
 
-const assetMap = /* provided JSON array */;
-const heroImage = assetMap.find(a => a.id === "hero-pizza");
-const menuImage = assetMap.find(a => a.id === "menu-items");
-const teamChefImage = assetMap.find(a => a.id === "team-chef");
-const testimonialCustomerImage = assetMap.find(a => a.id === "testimonial-customer");
-const contactShopImage = assetMap.find(a => a.id === "contact-shop");
-
-function resolveAsset(id) {
-  const asset = assetMap.find(a => a.id === id);
-  return asset ? asset.url : "/public/images/placeholder.webp";
-}
+const assetMap = [
+  { id: "hero-image", url: "https://images.pexels.com/photos/2909822/pexels-photo-2909822.jpeg?auto=compress&cs=tinysrgb&h=650&w=940", alt: "Colorful pink crust pizza with vegetables and herbs on a wooden platter. Perfect for food lovers." },
+  { id: "about-image", url: "https://images.pexels.com/photos/6188305/pexels-photo-6188305.jpeg?auto=compress&cs=tinysrgb&h=650&w=940", alt: "A young couple having milkshakes and pizza at a cozy cafe. Relaxed and joyful atmosphere." },
+  { id: "contact-image", url: "https://images.pexels.com/photos/5908216/pexels-photo-5908216.jpeg?auto=compress&cs=tinysrgb&h=650&w=940", alt: "Smiling Asian woman spreading tomato sauce on pizza dough while looking at funny female covering eyes with tomato slices in kitchen" },
+];
 
 export default function Home() {
+  const navItems = [
+    { name: "Home", id: "home" },
+    { name: "Menu", id: "menu" },
+    { name: "About", id: "about" },
+    { name: "Contact", id: "contact" },
+  ];
+
+  const products = [
+    { id: "1", brand: "Classic Margherita", name: "Delicious Cheese Pizza", price: "$8", rating: 5, reviewCount: "200", imageSrc: assetMap.find(a => a.id === "about-image")?.url },
+    { id: "2", brand: "Pepperoni Delight", name: "Spicy Pepperoni Pizza", price: "$10", rating: 4, reviewCount: "150", imageSrc: assetMap.find(a => a.id === "about-image")?.url },
+    { id: "3", brand: "Veggie Feast", name: "Loaded Veggie Pizza", price: "$9", rating: 5, reviewCount: "180", imageSrc: assetMap.find(a => a.id === "about-image")?.url },
+  ];
+
   return (
     <ThemeProvider
       defaultButtonVariant="text-stagger"
@@ -31,120 +34,69 @@ export default function Home() {
       borderRadius="rounded"
     >
       <div id="nav" data-section="nav">
-        <NavbarLayoutFloatingOverlay 
-          navItems={[
-            { name: "Home", id: "home" },
-            { name: "Menu", id: "menu" },
-            { name: "About", id: "about" },
-            { name: "Contact", id: "contact" }
-          ]}
-          brandName="Pizzeria"
-        />
+        <NavbarStyleApple navItems={navItems} brandName="Pizzeria" />
       </div>
-      <div id="hero" data-section="hero" className="scroll-mt-24">
+      <div id="hero" data-section="hero" className="scroll-mt-24 bg-red-100 text-gray-900">
         <div className="mx-auto px-4 md:px-6">
           <HeroBillboard
             title="Welcome to Our Pizzeria"
-            description="Experience the best pizzas in town with fresh ingredients and classic recipes."
-            imageSrc={heroImage?.url}
+            description="Experience the best pizzas in town, crafted with the finest ingredients."
+            imageSrc={assetMap.find(a => a.id === "hero-image")?.url}
             buttons={[
               { text: "View Menu", href: "menu" },
-              { text: "Call Us", href: "contact" }
+              { text: "Order Now", href: "contact" }
             ]}
-            className="bg-yellow-100"
-            titleClassName="text-gray-900"
-            descriptionClassName="text-gray-900"
           />
         </div>
       </div>
-      <div id="about" data-section="about" className="scroll-mt-24">
+      <div id="about" data-section="about" className="scroll-mt-24 bg-red-100 text-gray-900">
         <div className="mx-auto px-4 md:px-6">
-          <TextAbout
-            title="We use only the finest, freshest ingredients to create authentic Italian pizzas that delight the senses. Our experienced chefs craft each pie with love and care to ensure a memorable dining experience."
-            buttons={[
-              { text: "Learn More", href: "about" },
-              { text: "Our Story", href: "contact" }
+          <TextSplitAbout
+            title="About Us"
+            description={[
+              "Our pizzeria is family-owned and operated, bringing you the authentic taste of Italy.",
+              "Join us for a slice of happiness!"
             ]}
-            className="bg-yellow-100"
-            titleClassName="text-gray-900"
+            buttons={[{ text: "Learn More", href: "about" }]}
           />
         </div>
       </div>
-      <div id="features" data-section="feature" className="scroll-mt-24">
+      <div id="product" data-section="product" className="scroll-mt-24 bg-red-100 text-gray-900">
         <div className="mx-auto px-4 md:px-6">
-          <FeatureCardTwo
-            features={[
-              { title: "Fresh Ingredients", description: "We use fresh, locally-sourced ingredients for all our pizzas.", icon: "Sparkles" },
-              { title: "Authentic Recipes", description: "Traditional recipes handed down from generations.", icon: "BookOpen" },
-              { title: "Cozy Atmosphere", description: "Enjoy your meal in our warm and welcoming setting.", icon: "Home" }
-            ]}
-            className="bg-yellow-100"
-            textBoxTitleClassName="text-gray-900"
-            textBoxDescriptionClassName="text-gray-900"
-          />
+          <ProductCardTwo products={products} />
         </div>
       </div>
-      <div id="products" data-section="product" className="scroll-mt-24">
+      <div id="contact" data-section="contact" className="scroll-mt-24 bg-red-100 text-gray-900">
         <div className="mx-auto px-4 md:px-6">
-          <ProductCardOne
-            products={[
-              { id: "1", name: "Margherita Pizza", price: "$12", imageSrc: resolveAsset("menu-items") },
-              { id: "2", name: "Pepperoni Pizza", price: "$15", imageSrc: resolveAsset("menu-items") },
-              { id: "3", name: "Veggie Delight", price: "$13", imageSrc: resolveAsset("menu-items") }
-            ]}
-            className="bg-yellow-100"
-            textBoxTitleClassName="text-gray-900"
-            textBoxDescriptionClassName="text-gray-900"
-          />
-        </div>
-      </div>
-      <div id="team" data-section="team" className="scroll-mt-24">
-        <div className="mx-auto px-4 md:px-6">
-          <TeamCardThree
-            members={[
-              { id: "1", name: "Luca Rossi", role: "Head Chef", imageSrc: resolveAsset("team-chef") },
-              { id: "2", name: "Maria Esposito", role: "Pastry Chef", imageSrc: resolveAsset("team-chef") }
-            ]}
-            className="bg-yellow-100"
-            textBoxTitleClassName="text-gray-900"
-          />
-        </div>
-      </div>
-      <div id="testimonial" data-section="testimonial" className="scroll-mt-24">
-        <div className="mx-auto px-4 md:px-6">
-          <TestimonialCardTwo
-            testimonials={[
-              { id: "1", name: "Jessica M.", role: "Food Blogger", testimonial: "Best pizza I've ever had! The crust is amazing, and the flavors are spot on.", imageSrc: resolveAsset("testimonial-customer") },
-              { id: "2", name: "David L.", role: "Local Guide", testimonial: "A must-visit for pizza lovers. Friendly staff and a great atmosphere.", imageSrc: resolveAsset("testimonial-customer") }
-            ]}
-            className="bg-yellow-100"
-            textBoxTitleClassName="text-gray-900"
-          />
-        </div>
-      </div>
-      <div id="contact" data-section="contact" className="scroll-mt-24">
-        <div className="mx-auto px-4 md:px-6">
-          <ContactSplit
+          <ContactCenter
             tag="Contact Us"
-            title="We're here to help"
-            description="Reach out for reservations or questions."
-            imageSrc={resolveAsset("contact-shop")}
-            className="bg-yellow-100"
-            textBoxTitleClassName="text-gray-900"
-            textBoxDescriptionClassName="text-gray-900"
+            title="Get in Touch"
+            description="Call us to place an order or for any inquiries. We are here to serve you."
+            buttonText="Submit"
           />
         </div>
       </div>
-      <div id="footer" data-section="footer" className="scroll-mt-24">
+      <div id="footer" data-section="footer" className="scroll-mt-24 bg-red-100 text-gray-900">
         <div className="mx-auto px-4 md:px-6">
           <FooterBase
             columns={[
-              { title: "Menu", items: [{ label: "Home", href: "home" }, { label: "Pizza Menu", href: "menu" }, { label: "Contact", href: "contact" }] },
-              { title: "About", items: [{ label: "Our Story", href: "about" }, { label: "Team", href: "#team" }] }
+              {
+                title: "Menu",
+                items: [
+                  { label: "Home", href: "home" },
+                  { label: "Menu", href: "menu" },
+                  { label: "About", href: "about" }
+                ]
+              },
+              {
+                title: "Social",
+                items: [
+                  { label: "Facebook", href: "https://facebook.com" },
+                  { label: "Instagram", href: "https://instagram.com" }
+                ]
+              }
             ]}
-            copyrightText="© 2025 | Pizzeria"
-            className="bg-yellow-200"
-            copyrightTextClassName="text-gray-900"
+            copyrightText="© 2023 Pizzeria"
           />
         </div>
       </div>
