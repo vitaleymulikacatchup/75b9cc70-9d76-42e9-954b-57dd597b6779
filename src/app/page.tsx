@@ -13,12 +13,6 @@ import FooterBase from '@/components/sections/footer/FooterBase';
 
 const assetMap = [{"id":"hero-pizza","url":"https://images.pexels.com/photos/708587/pexels-photo-708587.jpeg?auto=compress&cs=tinysrgb&h=650&w=940","alt":"A mouthwatering slice of pepperoni pizza with cheese and spices, ideal for any meal."},{"id":"about-kitchen","url":"https://images.pexels.com/photos/5953490/pexels-photo-5953490.jpeg?auto=compress&cs=tinysrgb&h=650&w=940","alt":"Chef in a mask skillfully tosses pizza dough in a modern kitchen setting."},{"id":"menu-items","url":"https://images.pexels.com/photos/276147/pexels-photo-276147.jpeg?auto=compress&cs=tinysrgb&h=650&w=940","alt":"A brightly illuminated menu board showcasing various food and drink options with prices in a lively indoor setting."},{"id":"team-chef","url":"https://images.pexels.com/photos/7552730/pexels-photo-7552730.jpeg?auto=compress&cs=tinysrgb&h=650&w=940","alt":"Hands holding color swatches over cupcakes and packaging in a bright setting."},{"id":"testimonial-customer","url":"https://images.pexels.com/photos/7315008/pexels-photo-7315008.jpeg?auto=compress&cs=tinysrgb&h=650&w=940","alt":"A young woman smiling while savoring a slice of pizza in her living room."},{"id":"contact-shop","url":"https://images.pexels.com/photos/10600768/pexels-photo-10600768.jpeg?auto=compress&cs=tinysrgb&h=650&w=940","alt":"Close-up of a person dialing on a pink rotary phone, evoking a sense of nostalgia and retro charm."}];
 
-const heroImage = assetMap.find(a => a.id === "hero-pizza");
-const menuImage = assetMap.find(a => a.id === "menu-items");
-const teamChefImage = assetMap.find(a => a.id === "team-chef");
-const testimonialCustomerImage = assetMap.find(a => a.id === "testimonial-customer");
-const contactShopImage = assetMap.find(a => a.id === "contact-shop");
-
 function resolveAsset(id) {
   const asset = assetMap.find(a => a.id === id);
   return asset ? asset.url : "/public/images/placeholder.webp";
@@ -47,7 +41,7 @@ export default function Home() {
           <HeroBillboard
             title="Welcome to Our Pizzeria"
             description="Experience the best pizzas in town with fresh ingredients and classic recipes."
-            imageSrc={heroImage?.url}
+            imageSrc={resolveAsset("hero-pizza")}
             buttons={[
               { text: "View Menu", href: "menu" },
               { text: "Call Us", href: "contact" }
