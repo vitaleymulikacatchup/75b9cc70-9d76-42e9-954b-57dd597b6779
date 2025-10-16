@@ -69,9 +69,9 @@ export default function Home() {
         <div className="mx-auto px-4 md:px-6">
           <FeatureCardTwo
             features={[
-              { title: "Fresh Ingredients", description: "We use fresh, locally-sourced ingredients for all our pizzas.", icon: Sparkles },
-              { title: "Authentic Recipes", description: "Traditional recipes handed down from generations.", icon: BookOpen },
-              { title: "Cozy Atmosphere", description: "Enjoy your meal in our warm and welcoming setting.", icon: Home }
+              { title: "Fresh Ingredients", description: "We use fresh, locally-sourced ingredients for all our pizzas.", icon: "Sparkles" },
+              { title: "Authentic Recipes", description: "Traditional recipes handed down from generations.", icon: "BookOpen" },
+              { title: "Cozy Atmosphere", description: "Enjoy your meal in our warm and welcoming setting.", icon: "Home" }
             ]}
             className="bg-yellow-100"
             textBoxTitleClassName="text-gray-900"
